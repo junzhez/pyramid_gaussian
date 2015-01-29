@@ -1,0 +1,28 @@
+clear all;
+close all;
+
+%%# Read an image
+I = imread('ie.png');
+%# Create the gaussian filter with hsize = [5 5] and sigma = 2
+G = fspecial('gaussian',[5 5],2);
+
+size = 512;
+
+fi
+
+for i = 1 : 6
+    I = imfilter(I,G,'same');
+    
+    size = size/2;
+    
+    ig = zeros(size, size, 3);
+    for j = 1 : size
+        for k = 1 : size
+            ig(j, k, 1) = tmp(2*j, 2*k, 1);
+            ig(j, k, 2) = tmp(2*j, 2*k, 2);
+            ig(j, k, 3) = tmp(2*j, 2*k, 3);
+        end
+    end
+    
+    Igs(i+1) = ig;
+end
